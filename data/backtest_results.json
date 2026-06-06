@@ -1,0 +1,16 @@
+{
+  "metrics": {
+    "log_loss": 0.942,
+    "brier_score": 0.541,
+    "accuracy": 0.558
+  },
+  "betting_simulation": {
+    "starting_bankroll": 1000.0,
+    "ending_bankroll": 1185.40,
+    "total_profit": 185.40,
+    "bets_placed": 214,
+    "bets_won": 122,
+    "win_rate": 57.01,
+    "roi_percentage": 18.54
+  }
+}
