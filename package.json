@@ -12,7 +12,7 @@
   "start": "NODE_ENV=production tsx server.ts",
   "check:python": "python3 -m py_compile *.py ml/*.py",
   "validate": "npm run lint && npm run build"
-}  "dependencies": {
+},  "dependencies": {
     "@google/genai": "^1.29.0",
     "@tailwindcss/vite": "^4.1.14",
     "@vitejs/plugin-react": "^5.0.4",
