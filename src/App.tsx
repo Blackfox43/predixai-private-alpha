@@ -50,10 +50,11 @@ type LoadState = 'idle' | 'loading' | 'ready' | 'error';
 
 async function fetchJson<T>(url: string, init?: RequestInit): Promise<T> {
   const response = await fetch(url, init);
-  const body = await response.json().catch(() => null);
+  const body: unknown = await response.json().catch((): null => null);
+  const errorBody = body as { error?: unknown } | null;
 
   if (!response.ok) {
-    const message = body && typeof body.error === 'string' ? body.error : `Request failed: ${response.status}`;
+    const message = errorBody && typeof errorBody.error === 'string' ? errorBody.error : `Request failed: ${response.status}`;
     throw new Error(message);
   }
 
