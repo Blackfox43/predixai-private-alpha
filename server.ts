@@ -286,9 +286,20 @@ async function startServer() {
     });
   }
 
-  app.listen(PORT, "0.0.0.0", () => {
-    console.log(`Server running on http://localhost:${PORT}`);
-  });
+import path from "path";
+
+// 1. Serve frontend build
+app.use(express.static(path.join(process.cwd(), "dist")));
+
+// 2. React router fallback (VERY IMPORTANT)
+app.get("*", (_, res) => {
+  res.sendFile(path.join(process.cwd(), "dist", "index.html"));
+});
+
+// 3. Start server LAST
+app.listen(PORT, () => {
+  console.log(`Server running on port ${PORT}`);
+});
 }
 
 startServer().catch((error) => {
